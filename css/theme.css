@@ -1,0 +1,154 @@
+/* Темная тема (по умолчанию) */
+[data-theme="dark"] {
+    --bg-primary: #111619;
+    --bg-secondary: #202426;
+    --text-primary: #FFFFFF;
+    --text-secondary: #99A3B2;
+    --accent: #46ADF5;
+    --progress-bg: rgba(72, 76, 78, 1);
+    --progress-fill: #FFFFFF;
+    --highlight: #FFD700;
+    --manager-title: #FFFFFF;
+    --stat-value2: #FFFFFF;
+    --page-number-color: #FFFFFF;
+}
+
+/* Светлая тема */
+[data-theme="light"] {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #EDF5F9;
+    --text-primary: #20272C;
+    --text-secondary: #99A3B2;
+    --accent: #46ADF5;
+    --progress-bg: #C8D3D9;
+    --progress-fill: #46ADF5;
+    --highlight: #FFD700;
+    --manager-title: #666D72;
+    --page-number-color: #20272C;
+    --stat-value2: #46ADF5;
+}
+
+/* Стили для кнопки переключения темы */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.theme-toggle svg {
+    color: var(--accent);
+}
+
+/* Показываем/скрываем иконки в зависимости от темы */
+[data-theme="dark"] .sun-icon,
+[data-theme="light"] .moon-icon {
+    display: none;
+}
+
+[data-theme="dark"] .moon-icon,
+[data-theme="light"] .sun-icon {
+    display: block;
+}
+
+/* Применяем переменные темы к существующим стилям */
+.stats-container {
+    background: var(--bg-primary);
+}
+
+.manager-row {
+    background: var(--bg-secondary);
+}
+
+.manager-row-alt {
+    background: var(--bg-primary);
+}
+
+.stat-title {
+    color: var(--text-primary);
+}
+
+.stat-subtitle {
+    color: var(--accent);
+}
+
+.manager-name {
+    color: var(--accent);
+}
+
+.manager-title {
+    color: var(--text-primary);
+}
+
+.stat-value {
+    color: var(--accent);
+}
+
+.progress-bar {
+    background-color: var(--progress-bg);
+}
+
+.progress-fill {
+    background: var(--progress-fill);
+}
+
+.progress-fill.highlight {
+    background: var(--highlight);
+}
+
+.pagination-numbers div {
+    color: var(--text-secondary);
+}
+
+.page-number {
+    color: var(--text-primary);
+}
+
+/* Стили пагинации для темной темы */
+[data-theme="dark"] .page-arrow {
+    background: #46ADF5;
+}
+
+[data-theme="dark"] .page-arrow svg {
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .page-arrow.inactive {
+    background: #4F687A;
+}
+
+[data-theme="dark"] .page-arrow.inactive svg {
+    color: #99A4B2;
+}
+
+/* Стили пагинации для светлой темы */
+[data-theme="light"] .page-arrow {
+    background: #46ADF5;
+}
+
+[data-theme="light"] .page-arrow svg {
+    color: #FFFFFF;
+}
+
+[data-theme="light"] .page-arrow.inactive {
+    background: #82E9FF;
+}
+
+[data-theme="light"] .page-arrow.inactive svg {
+    color: #E9EDF3;
+}
+
+/* Плавный переход между темами */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+  
