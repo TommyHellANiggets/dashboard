@@ -156,14 +156,23 @@ body {
   overflow: hidden;
   align-items: center;
   padding: 0 2px;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .progress-fill {
   border-radius: 2px;
-  background: var(--white);
+  background: var(--progress-fill);
   height: 4px;
   width: 0;
   transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.progress-bar.highlight {
+  background-color: #00AA00;
+}
+
+.progress-fill.highlight {
+  background: #00FF00;
 }
 
 .pagination {

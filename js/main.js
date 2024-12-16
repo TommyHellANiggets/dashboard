@@ -55,26 +55,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateProgressBars() {
         const headerColumns = document.querySelectorAll('.page-1-header .stat-column');
-        const statColumns = page1Content.querySelectorAll('.stat-column');
+        const allManagerRows = document.querySelectorAll('.manager-row, .manager-row-alt');
         
-        statColumns.forEach((column, index) => {
-            const statValue = parseInt(column.querySelector('.stat-value').textContent);
-            const progressBar = column.querySelector('.progress-bar');
-            const progressFill = column.querySelector('.progress-fill');
+        allManagerRows.forEach(row => {
+            const statColumns = row.querySelectorAll('.stat-column');
             
-            if (progressBar && progressFill) {
-                const normText = headerColumns[index].querySelector('.stat-subtitle').textContent;
-                const maxValue = parseInt(normText.match(/\d+/)[0]);
-                const fillPercentage = (statValue / maxValue) * 100;
+            statColumns.forEach((column, index) => {
+                const statValue = parseInt(column.querySelector('.stat-value').textContent);
+                const progressBar = column.querySelector('.progress-bar');
+                const progressFill = column.querySelector('.progress-fill');
                 
-                progressFill.style.width = Math.min(fillPercentage, 100) + '%';
-                
-                if (statValue >= maxValue) {
-                    progressFill.classList.add('highlight');
-                } else {
-                    progressFill.classList.remove('highlight');
+                if (progressBar && progressFill) {
+                    const normText = headerColumns[index].querySelector('.stat-subtitle').textContent;
+                    const maxValue = parseInt(normText.match(/\d+/)[0]);
+                    const fillPercentage = (statValue / maxValue) * 100;
+                    
+                    progressFill.style.width = Math.min(fillPercentage, 100) + '%';
+                    
+                    if (fillPercentage >= 100) {
+                        progressFill.classList.add('highlight');
+                        progressBar.classList.add('highlight');
+                    } else {
+                        progressFill.classList.remove('highlight');
+                        progressBar.classList.remove('highlight');
+                    }
                 }
-            }
+            });
         });
     }
 
