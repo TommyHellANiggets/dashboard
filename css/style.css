@@ -20,14 +20,16 @@ body {
   background: var(--black);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
 }
 
 .rows-container {
-  min-height: calc(5 * 140px);
+  min-height: auto;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .header-wrapper {
@@ -167,7 +169,7 @@ body {
 .pagination {
   align-self: center;
   display: flex;
-  margin-top: 45px;
+  margin: 45px 0;
   align-items: center;
   gap: 28px;
   color: var(--text-gray);
