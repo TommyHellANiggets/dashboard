@@ -54,24 +54,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateProgressBars() {
+        const headerColumns = document.querySelectorAll('.page-1-header .stat-column');
         const statColumns = page1Content.querySelectorAll('.stat-column');
+        
         statColumns.forEach((column, index) => {
             const statValue = parseInt(column.querySelector('.stat-value').textContent);
             const progressBar = column.querySelector('.progress-bar');
             const progressFill = column.querySelector('.progress-fill');
             
             if (progressBar && progressFill) {
-                const maxValue = index === 1 ? 100 : 50;
+                const normText = headerColumns[index].querySelector('.stat-subtitle').textContent;
+                const maxValue = parseInt(normText.match(/\d+/)[0]);
                 const fillPercentage = (statValue / maxValue) * 100;
                 
                 progressFill.style.width = Math.min(fillPercentage, 100) + '%';
                 
                 if (statValue >= maxValue) {
-                    progressBar.style.backgroundColor = 'var(--yellow)';
-                    progressFill.style.backgroundColor = 'var(--yellow)';
+                    progressFill.classList.add('highlight');
                 } else {
-                    progressBar.style.backgroundColor = 'var(--progress-bg)';
-                    progressFill.style.backgroundColor = 'var(--white)';
+                    progressFill.classList.remove('highlight');
                 }
             }
         });

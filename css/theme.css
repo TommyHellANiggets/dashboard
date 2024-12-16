@@ -98,7 +98,7 @@
 }
 
 .progress-fill.highlight {
-    background: var(--highlight);
+    background-color: var(--highlight);
 }
 
 .pagination-numbers div {
